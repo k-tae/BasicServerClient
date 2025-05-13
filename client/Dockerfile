@@ -1,7 +1,13 @@
 FROM python:3.10-slim
 
-# ###
-#
-# 다음 주석을 지우고 docker 파일을 완성하자.
-#
-# ###
+WORKDIR /home/ljb/BasicServerClient/client
+
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+COPY run_client.py .
+
+RUN chmod +x run_client.py
+
+CMD [ "python", "run_client.py" ]
